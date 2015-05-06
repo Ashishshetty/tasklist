@@ -8,12 +8,15 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  def task_show
+    @task = Task.find(params[:id])
+  end
+
   def new
     @task = Task.new
   end
 
   def create
-
     @task = Task.create(task_params)
   end
 
@@ -38,6 +41,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:project_name,:task_name,:specific_task)
+      params.require(:task).permit(:name,:task_name,:specific_task)
     end
 end
